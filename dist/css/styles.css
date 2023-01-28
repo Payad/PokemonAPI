@@ -1,0 +1,42 @@
+.pokeContainer {
+  border: 2px solid black;
+  margin: 1rem;
+}
+
+.flex-container {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+
+img {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  width: 20px;
+  border: 1px solid black;
+  border-radius: 11px;
+}
+
+ul {
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+li {
+  width: 100px;
+  border-radius: 5px;
+  padding: 0.1rem;
+  list-style: none;
+  margin: 0.5rem;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */
