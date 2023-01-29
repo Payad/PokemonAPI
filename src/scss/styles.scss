@@ -66,6 +66,7 @@ li {
 .search-bar {
     display: flex;
     justify-content: center;
-    background-image: url('dist/css/search-icon3(1).png');
+    background: url('../imgs/search-icon3.png') no-repeat 7px;
+    background-size: 18px;
     // background-image: url('dist/css/pokemon-logo-png (1).png');
 }
