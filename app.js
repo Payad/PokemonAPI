@@ -180,3 +180,35 @@ fetchKantoPokemon();
 // if(pokemon.types === 'grass') {
 //     document.body.style.backgrounColor = 'red';
 // }
+
+// function searchPokemon {
+//     const input, filter, ul, li, a, i, txtValue, pokename
+//     input = document.querySelector('.search-bar');
+//     filter = input.value.toUpperCase();
+//     pokename = document.querySelector('h3');
+//     for (let i = 0; i <= pokename.length; i++) {
+//         a = pokename[i].get
+//     }
+// }
+
+function getHTML(data) {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    // return data.map((name) => generateHTML(name));
+    .then((data) => {
+        newData = data.json();
+        // console.log(newData);
+    })
+    .then((data) => {
+        generateHTML(newData);
+    })
+}
+
+function generateHTML(newData) {
+    console.log(newData)
+}
+
+// function generateHTML() {
+//     return `<div`
+// }
+
+getHTML();

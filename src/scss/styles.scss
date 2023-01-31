@@ -8,9 +8,16 @@ body {
 //     width: 50%
 // }
 
+// main {
+//     // background-image: url('imgs/pokeballcollection1.jpg');
+//     background-image: url('imgs/pokeballcollection2.jpg');
+
+// }
+
 .pokeContainer {
     border: 2px solid black;
     margin: 1rem;
+    background-color: rgb(255, 255, 255);
 }
 
 .flex-container {
@@ -31,9 +38,12 @@ h3 {
 }
 
 p {
-    width: 20px;
+    width: 50px;
     border: 1px solid black;
     border-radius: 11px;
+    text-align: center;
+    background-color: rgb(95, 158, 160);
+    color: rgb(255, 255, 255);
 }
 
 ul {
@@ -63,10 +73,14 @@ li {
     color: white;
 }
 
-.search-bar {
+.search {
     display: flex;
     justify-content: center;
+
+
+.search-bar {
     background: url('../imgs/search-icon3.png') no-repeat 7px;
     background-size: 18px;
     // background-image: url('dist/css/pokemon-logo-png (1).png');
+}
 }
