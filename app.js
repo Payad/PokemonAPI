@@ -191,21 +191,247 @@ fetchKantoPokemon();
 //     }
 // }
 
-function getHTML(data) {
+function getHTML() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     // return data.map((name) => generateHTML(name));
-    .then((data) => {
-        newData = data.json();
+    // .then((data) => {
+    //     newData = data.json();
         // console.log(newData);
-    })
-    .then((data) => {
-        generateHTML(newData);
+        .then((data) => data.json())
+    .then((allPokemon) => {
+        // generateHTML(data);
+        // getPokeData(data);
+        allPokemon.results.forEach(function(pokemon) {
+            getPokeData(pokemon)
+        }
+            
+        )
     })
 }
 
-function generateHTML(newData) {
-    console.log(newData)
+function getPokeData(pokemon) {
+    const url = pokemon.url;
+    fetch(url)
+    .then((data) => data.json())
+    // console.log(url);
+    // console.log(pokemon);
+    .then(function(data) {
+        searchFilter(data)
+        // console.log(data);
+    })
 }
+
+const searchFilter = (data) => {
+    // let pokeName = document.createElement('h3');
+    // pokeName.innerHTML = data.name;
+
+    let pokeName = data.name;
+
+    let pokeId = data.id;
+
+    let pokeTypes = data.types;
+
+    let pokeAbilities = data.abilities
+
+    // const mainContainer = document.querySelector('.allPokemonContainer');
+    //  const pokeContainer = document.createElement('div');
+    //  pokeContainer.classList.add('.poke_card'); 
+    // const containers = document.querySelectorAll('.poke_card');
+    const searchBar = document.querySelector('.search-bar');
+
+    searchBar.addEventListener('keyup', (event) => {
+        const pokeContainer = document.querySelectorAll('.pokeContainer');
+        const value = event.target.value.toLowerCase();
+        // console.log(pokeContainer);
+        pokeContainer.forEach((container) => {
+            // console.log(container);
+        })
+    })
+
+    // searchBar.addEventListener('keyup', (event) => {
+    //     const pokeContainer = document.createElement('div');
+    //  pokeContainer.classList.add('.poke_card');
+    //     const containers = document.querySelectorAll('.poke_card');
+    //     const mainContainer = document.querySelector('.allPokemonContainer');
+    //     const value = event.target.value.toLowerCase();
+    //     containers.forEach((container) => {
+    //         if (container.id.toLowerCase().includes(value)) {
+    //             container.style.display = 'block';
+    //         } else {
+    //             container.style.display = 'none';
+    //         }
+    //     })
+    //     // mainContainer.append(containers)
+    // })
+
+    // pokeContainer.append(pokemonInnerHTML);
+    // mainContainer.append(pokeContainer);
+    // pokeId.innerHTML = data.id;
+
+    // let pokeTypes;
+    // pokeTypes.innerHTML = data.types;
+
+    // const pokemonInnerHTML = `<div class="pokeContainer">
+    // <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`}>
+    //    <h3>${pokeName}</h3>
+    //  <p>${pokeId}</p>
+    //   <div class="flex-container">
+    //   <div class="types">
+    //    <h4>Types</h4>
+    //    <ul>
+    //     <li>${pokeTypes[0]}</li>
+    //   <li>${pokeTypes[1]}</li>
+    //    </ul>
+    //    </div>
+    //   <div class="Abilities">
+    //   <h4>Abilities</h4>
+    //  <ul>
+    //  <li>${pokeAbilities[0]}</li>
+    //   </li>${pokeAbilities[1]}</li>
+    //   </ul>
+    //   </div>
+    //    </div>
+    //  </div>`;
+    
+    //  pokeContainer.append(pokemonInnerHTML);
+    //  mainContainer.append(pokeContainer);
+
+
+    // console.log(pokeName, pokeId, pokeTypes, pokeAbilities);
+}
+
+
+
+// function getHTML(data) {
+//     const searchFilter = (data) => {
+//         // console.log(data);
+//         const pokemon = data.json();
+//         console.log(pokemon);
+//     // const mainContainer = document.querySelectorAll('.allPokemonContainer');
+//     // // const pokeContainer = document.createElement('div');
+//     // // pokeContainer.classList.add('pokeContainer');
+//     // pokeId = data.id;
+//     // const searchBar = document.querySelector('.search-bar');
+//     // searchBar.addEventListener('keyup', (event) => {
+//     //   const value = event.target.value.toLowerCase();
+//     //   mainContainer.forEach((container) => {
+//     //     if (container.id.toLowerCase().includes(value)) {
+//     //         container.style.display = 'block'
+//     //     } else {
+//     //         container.style.display = 'none'
+//     //     }
+
+//     //     const pokemonInnerHTML = `<div class="pokeContainer">
+//     //     <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`}>
+//     //     <h3>${pokeName}</h3>
+//     //     <p>${pokeId}</p>
+//     //     <div class="flex-container">
+//     //     <div class="types">
+//     //     <h4>Types</h4>
+//     //     <ul>
+//     //     <li>${types[0]}</li>
+//     //     <li>${types[1]}</li>
+//     //     </ul>
+//     //     </div>
+//     //     <div class="Abilities">
+//     //     <h4>Abilities</h4>
+//     //     <ul>
+//     //     <li>${abilities[0]}</li>
+//     //     </li>${abilities[1]}</li>
+//     //     </ul>
+//     //     </div>
+//     //     </div>
+//     //     </div>`;
+
+//     //     mainContainer.append(pokemonInnerHTML);
+//     //   })
+//     // // console.log(pokeContainer);
+    
+//     // })
+//     // // console.log(data);
+//     // // return data.map(({pokeName, pokeNumber, types, abilities}) => generateHTML(data))
+    
+// }
+
+// searchFilter();
+
+
+
+
+// function generateHTML(pokeName, pokeNumber, types, abilities) {
+//     console.log(pokeName, pokeNumber, types, abilities);
+// }
+
+// function generateHTML(pokeName, pokeNumber, types, abilities) {
+//     return `<div class="pokeContainer">
+//             <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`}>
+//             <h3>${pokeName}</h3>
+//             <p>${pokeNumber}</p>
+//             <div class="flex-container">
+//             <div class="types">
+//             <h4>Types</h4>
+//             <ul>
+//             <li>${types[0]}</li>
+//             <li>${types[1]}</li>
+//             </ul>
+//             </div>
+//             <div class="Abilities">
+//             <h4>Abilities</h4>
+//             <ul>
+//             <li>${abilities[0]}</li>
+//             </li>${abilities[1]}</li>
+//             </ul>
+//             </div>
+//             </div>
+//             </div>`;
+// }
+
+// function noResultHTML() {}
+
+// const input = document.querySelector('.search');
+
+
+// const pokemonInnerHTML = `<div class="pokeContainer">
+// <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`}>
+// <h3>${name}</h3>
+// <p>${pokeId}</p>
+// <div class="flex-container">
+// <div class="types">
+// <h4>Types</h4>
+// <ul>
+// <li>${types[0]}</li>
+// <li>${types[1]}</li>
+// </ul>
+// </div>
+// <div class="Abilities">
+// <h4>Abilities</h4>
+// <ul>
+// <li>${abilities[0]}</li>
+// </li>${abilities[1]}</li>
+// </ul>
+// </div>
+// </div>
+// </div>`;
+
+// input.addEventListener('keyup', function(e) {
+//     const currentword = e.target.value;
+//     const filteredData = pokeData.filter((pokemon) => {
+//         return (pokemon.name.includes(currentword) || pokemon.id.includes(currentword))
+//     })
+//     pokeContainer.append(pokemonInnerHTML)
+// })
+// function generateHTML(data) {
+//     // console.log(newData)
+//     // console.log(data)
+//     // const input = document.querySelector('.search');
+//     // input.value.toUpperCase();
+//     let textValue;
+//     const input = document.querySelector('.search').value;
+//     input.toUpperCase();
+//     input.filter(textValue.includes(currentValue))
+
+
+// }
 
 // function generateHTML() {
 //     return `<div`
