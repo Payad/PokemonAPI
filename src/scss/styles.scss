@@ -70,17 +70,22 @@ li {
     // font-size: small;
     font-size: 10px;
     font-weight: 600;
-    color: white;
+    // color: white;
 }
 
 .search {
     display: flex;
     justify-content: center;
+}
+
+// .search {
+//     display: flex;
+//     justify-content: center;
 
 
-.search-bar {
-    background: url('../imgs/search-icon3.png') no-repeat 7px;
-    background-size: 18px;
-    // background-image: url('dist/css/pokemon-logo-png (1).png');
-}
-}
+// .search-bar {
+//     // background: url('../imgs/search-icon3.png') no-repeat 7px;
+//     background-size: 18px;
+//     // background-image: url('dist/css/pokemon-logo-png (1).png');
+// }
+// }

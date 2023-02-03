@@ -25,7 +25,7 @@ function fetchPokemonData(pokemon) {
     fetch(url)
     .then(response => response.json())
     .then(function(pokeData) {
-        renderPokemon(pokeData)
+        createPokeCard(pokeData)
         // console.log(pokeData)
     })
     // allPokemon.results.forEach(function(pokemon) {
@@ -33,135 +33,186 @@ function fetchPokemonData(pokemon) {
     //     renderPokemon(pokemon)
     // })
 }
-   
-function renderPokemon(pokeData) {
+
+function createPokeCard(pokeData) {
     let allPokemonContainer = document.querySelector('.allPokemonContainer');
-    let pokeContainer = document.createElement('div');
+    const pokeContainer = document.createElement('div');
     pokeContainer.classList.add('pokeContainer');
+    const searchElement = document.querySelector('.search');
 
-    let pokeName = document.createElement('h3');
-    pokeName.innerHTML = pokeData.name;
-
-    let pokeNumber = document.createElement('p')
-    pokeNumber.innerHTML = `#${pokeData.id}`
-
-    const category = document.createElement('div');
-    category.classList.add('flex-container');
-    // category.append(typeContainer);
-    // category.append(abiliContainer);
-
-    let pokeTypes = document.createElement('ul');
-
-    const typeContainer = document.createElement('div');
-    typeContainer.classList.add('types');
-    const typeHeader = document.createElement('h4');
-    typeHeader.innerHTML = 'Types';
-    typeContainer.append(typeHeader);
-    typeContainer.append(pokeTypes);
+    let pokeName = pokeData.name;
+    let pokeId = pokeData.id;
+    let pokeTypes = pokeData.types[0].type.name;
+    // let pokeTypes2 = pokeData.types[1].type.name;
+    let pokeAbilities = pokeData.abilities[0].ability.name
+    // let pokeAbilities2 = pokeData.abilities[1].name
 
 
-    let pokeAbilities = document.createElement('ul');
+//     const pokemonHTML = `<div class="pokemon__imageContainer" id="${pokeName}">
+//     <img src="https://pokeres.bastionbot.org/images/pokemon/${pokeId}.png" />
+//   </div>
+//   <div class="pokemon__infomationContainer">
+//     <span class="pokemon__id">#${pokeId.toString().padStart(3, "0")}</span>
+//     <h3 class="pokemon__name">${pokeName}</h3>
+//     <small class="pokemon__type">Type: <span>${pokeTypes}</span></small>
+//   </div>`;
 
-    const abiliContainer = document.createElement('div');
-    abiliContainer.classList.add('Abilities');
-    abilHeader = document.createElement('h4');
-    abilHeader.innerHTML = 'Abilities';
-    abiliContainer.append(abilHeader);
-    abiliContainer.append(pokeAbilities);
+    const pokemonInnerHTML = `<div class="pokeContainer">
+    <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`}>
+       <h3>${pokeName}</h3>
+     <p>${pokeId}</p>
+      <div class="flex-container">
+      <div class="types">
+       <h4>Types</h4>
+       <ul>
+        <li>${pokeTypes}</li>
+      <li>${pokeTypes}</li>
+       </ul>
+       </div>
+      <div class="Abilities">
+      <h4>Abilities</h4>
+     <ul>
+     <li>${pokeAbilities}</li>
+      </li>${pokeAbilities}</li>
+      </ul>
+      </div>
+       </div>
+     </div>`;
 
-    createTypes(pokeData.types, pokeTypes)
+     pokeContainer.innerHTML = pokemonInnerHTML;
+     allPokemonContainer.append(pokeContainer)
 
-    createPokeImage(pokeData.id, pokeContainer)
-
-    createAbilities(pokeData.abilities, pokeAbilities)
-
-    category.append(typeContainer);
-    category.append(abiliContainer);
-
-    // pokeContainer.append(pokeName, pokeNumber, typeContainer, abiliContainer);
-    pokeContainer.append(pokeName, pokeNumber, category);
-
-    allPokemonContainer.append(pokeContainer);
-
-
+    //  searchFilter(data)
 }
+   
+// function renderPokemon(pokeData) {
+//     let allPokemonContainer = document.querySelector('.allPokemonContainer');
+//     let pokeContainer = document.createElement('div');
+//     pokeContainer.classList.add('pokeContainer');
 
-function createTypes(types, ul) {
-    types.forEach(function(type) {
-        let typeLi = document.createElement('li');
-        typeLi.innerHTML = type['type']['name'];
-        ul.append(typeLi);
+//     let pokeName = document.createElement('h3');
+//     pokeName.innerHTML = pokeData.name;
 
-        // if (typeLi.innerHTML === 'grass') {
-        //     typeLi.style.backgroundColor = 'rgb(0, 204, 0)';
-        // }
-        if(typeLi.innerHTML === 'grass') {
-            // document.body.backgroundColor = 'red';
-            console.log(typeLi);
-            typeLi.style.backgroundColor = 'rgb(0, 204, 0)';
-        } else if (typeLi.innerHTML === 'poison') {
-            typeLi.style.backgroundColor = 'rgb(153, 0, 153)';
-        } else if (typeLi.innerHTML === 'fire') {
-            typeLi.style.backgroundColor = 'rgb(255, 0, 0)';
-        } else if (typeLi.innerHTML === 'bug') {
-            typeLi.style.backgroundColor = 'rgb(153, 153, 0)';
-        } else if (typeLi.innerHTML === 'water') {
-            typeLi.style.backgroundColor = 'rgb(0, 128, 255)';
-        } else if (typeLi.innerHTML === 'normal') {
-            typeLi.style.backgroundColor = 'rgb(224, 224, 224)';
-        } else if (typeLi.innerHTML === 'fighting') {
-            typeLi.style.backgroundColor = 'rgb(102, 0, 51)';
-        } else if (typeLi.innerHTML === 'flying') {
-            typeLi.style.backgroundColor = 'rgb(102, 178, 255)';
-        } else if (typeLi.innerHTML === 'electric') {
-            typeLi.style.backgroundColor = 'rgb(255, 255, 0)';
-        } else if (typeLi.innerHTML === 'rock') {
-            typeLi.style.backgroundColor = 'rgb(153, 153, 0)';
-        } else if (typeLi.innerHTML === 'psychic') {
-            typeLi.style.backgroundColor = 'rgb(255, 153, 153)';
-        } else if (typeLi.innerHTML === 'ground') {
-            typeLi.style.backgroundColor = 'rgb(204, 204, 0)';
-        } else if (typeLi.innerHTML === 'dragon') {
-            typeLi.style.backgroundColor = 'rgb(102, 0, 204)';
-        } else if (typeLi.innerHTML === 'fairy') {
-            typeLi.style.backgroundColor = 'rgb(255, 153, 255)';
-        } else if (typeLi.innerHTML === 'steel') {
-            typeLi.style.backgroundColor = 'rgb(192, 192, 192)';
-        } else if (typeLi.innerHTML === 'ghost') {
-            typeLi.style.backgroundColr = 'rgb(76, 0, 153)';
-        } else if (typeLi.innerHTML === 'ice') {
-            typeLi.style.backgroundColor = 'rgb(204, 255, 255)';
-        } else if (typeLi.innerHTML === 'dark') {
-            typeLi.style.backgroundColor = 'rgb(51, 25, 0)';
-        }
-    })
-}
+//     let pokeNumber = document.createElement('p')
+//     pokeNumber.innerHTML = `#${pokeData.id}`
 
-function createPokeImage(pokeId, pokeContainer) {
-    let pokeImage = document.createElement('img');
-    // pokeImage.srcset = `https://pokeapi.glitch.me/v1/pokemon/${pokeId}`;
-    // pokeImage.srcset = `https://pokeapi.glitch.me/v1/pokemon/1/`;
+//     const category = document.createElement('div');
+//     category.classList.add('flex-container');
+//     // category.append(typeContainer);
+//     // category.append(abiliContainer);
 
-    //GITHUB POKEMON IMAGE SPRITE
-    // pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokeId}.png`;
-    //NEXUS POKEMONN IMAGE SPRITE
-    pokeImage.srcset = `https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`
+//     let pokeTypes = document.createElement('ul');
 
-    pokeContainer.append(pokeImage);
-}
+//     const typeContainer = document.createElement('div');
+//     typeContainer.classList.add('types');
+//     const typeHeader = document.createElement('h4');
+//     typeHeader.innerHTML = 'Types';
+//     typeContainer.append(typeHeader);
+//     typeContainer.append(pokeTypes);
 
-function createAbilities(abilities, ul){
-    abilities.forEach(function(ability) {
-        let abilityLi = document.createElement('li');
-        // console.log(abilityLi);
-        abilityLi.innerHTML = ability['ability']['name'];
-        ul.append(abilityLi);
 
-        if (abilityLi) {
-            abilityLi.style.backgroundColor = 'rgb(192, 192, 192)';
-        }
-    })
-}
+//     let pokeAbilities = document.createElement('ul');
+
+//     const abiliContainer = document.createElement('div');
+//     abiliContainer.classList.add('Abilities');
+//     abilHeader = document.createElement('h4');
+//     abilHeader.innerHTML = 'Abilities';
+//     abiliContainer.append(abilHeader);
+//     abiliContainer.append(pokeAbilities);
+
+//     createTypes(pokeData.types, pokeTypes)
+
+//     createPokeImage(pokeData.id, pokeContainer)
+
+//     createAbilities(pokeData.abilities, pokeAbilities)
+
+//     category.append(typeContainer);
+//     category.append(abiliContainer);
+
+//     // pokeContainer.append(pokeName, pokeNumber, typeContainer, abiliContainer);
+//     pokeContainer.append(pokeName, pokeNumber, category);
+
+//     allPokemonContainer.append(pokeContainer);
+
+
+// }
+
+// function createTypes(types, ul) {
+//     types.forEach(function(type) {
+//         let typeLi = document.createElement('li');
+//         typeLi.innerHTML = type['type']['name'];
+//         ul.append(typeLi);
+
+//         // if (typeLi.innerHTML === 'grass') {
+//         //     typeLi.style.backgroundColor = 'rgb(0, 204, 0)';
+//         // }
+//         if(typeLi.innerHTML === 'grass') {
+//             // document.body.backgroundColor = 'red';
+//             console.log(typeLi);
+//             typeLi.style.backgroundColor = 'rgb(0, 204, 0)';
+//         } else if (typeLi.innerHTML === 'poison') {
+//             typeLi.style.backgroundColor = 'rgb(153, 0, 153)';
+//         } else if (typeLi.innerHTML === 'fire') {
+//             typeLi.style.backgroundColor = 'rgb(255, 0, 0)';
+//         } else if (typeLi.innerHTML === 'bug') {
+//             typeLi.style.backgroundColor = 'rgb(153, 153, 0)';
+//         } else if (typeLi.innerHTML === 'water') {
+//             typeLi.style.backgroundColor = 'rgb(0, 128, 255)';
+//         } else if (typeLi.innerHTML === 'normal') {
+//             typeLi.style.backgroundColor = 'rgb(224, 224, 224)';
+//         } else if (typeLi.innerHTML === 'fighting') {
+//             typeLi.style.backgroundColor = 'rgb(102, 0, 51)';
+//         } else if (typeLi.innerHTML === 'flying') {
+//             typeLi.style.backgroundColor = 'rgb(102, 178, 255)';
+//         } else if (typeLi.innerHTML === 'electric') {
+//             typeLi.style.backgroundColor = 'rgb(255, 255, 0)';
+//         } else if (typeLi.innerHTML === 'rock') {
+//             typeLi.style.backgroundColor = 'rgb(153, 153, 0)';
+//         } else if (typeLi.innerHTML === 'psychic') {
+//             typeLi.style.backgroundColor = 'rgb(255, 153, 153)';
+//         } else if (typeLi.innerHTML === 'ground') {
+//             typeLi.style.backgroundColor = 'rgb(204, 204, 0)';
+//         } else if (typeLi.innerHTML === 'dragon') {
+//             typeLi.style.backgroundColor = 'rgb(102, 0, 204)';
+//         } else if (typeLi.innerHTML === 'fairy') {
+//             typeLi.style.backgroundColor = 'rgb(255, 153, 255)';
+//         } else if (typeLi.innerHTML === 'steel') {
+//             typeLi.style.backgroundColor = 'rgb(192, 192, 192)';
+//         } else if (typeLi.innerHTML === 'ghost') {
+//             typeLi.style.backgroundColr = 'rgb(76, 0, 153)';
+//         } else if (typeLi.innerHTML === 'ice') {
+//             typeLi.style.backgroundColor = 'rgb(204, 255, 255)';
+//         } else if (typeLi.innerHTML === 'dark') {
+//             typeLi.style.backgroundColor = 'rgb(51, 25, 0)';
+//         }
+//     })
+// }
+
+// function createPokeImage(pokeId, pokeContainer) {
+//     let pokeImage = document.createElement('img');
+//     // pokeImage.srcset = `https://pokeapi.glitch.me/v1/pokemon/${pokeId}`;
+//     // pokeImage.srcset = `https://pokeapi.glitch.me/v1/pokemon/1/`;
+
+//     //GITHUB POKEMON IMAGE SPRITE
+//     // pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokeId}.png`;
+//     //NEXUS POKEMONN IMAGE SPRITE
+//     pokeImage.srcset = `https://nexus.traction.one/images/pokemon/pokemon/${pokeId}.png`
+
+//     pokeContainer.append(pokeImage);
+// }
+
+// function createAbilities(abilities, ul){
+//     abilities.forEach(function(ability) {
+//         let abilityLi = document.createElement('li');
+//         // console.log(abilityLi);
+//         abilityLi.innerHTML = ability['ability']['name'];
+//         ul.append(abilityLi);
+
+//         if (abilityLi) {
+//             abilityLi.style.backgroundColor = 'rgb(192, 192, 192)';
+//         }
+//     })
+// }
 
 // function createAbilities(pokeAbilities, ul) {
 //    pokeAbilities.forEach(function(ability) {
@@ -222,30 +273,26 @@ function getPokeData(pokemon) {
 }
 
 const searchFilter = (data) => {
-    // let pokeName = document.createElement('h3');
-    // pokeName.innerHTML = data.name;
 
-    let pokeName = data.name;
-
-    let pokeId = data.id;
-
-    let pokeTypes = data.types;
-
-    let pokeAbilities = data.abilities
-
-    // const mainContainer = document.querySelector('.allPokemonContainer');
-    //  const pokeContainer = document.createElement('div');
-    //  pokeContainer.classList.add('.poke_card'); 
-    // const containers = document.querySelectorAll('.poke_card');
     const searchBar = document.querySelector('.search-bar');
 
     searchBar.addEventListener('keyup', (event) => {
         const pokeContainer = document.querySelectorAll('.pokeContainer');
         const value = event.target.value.toLowerCase();
-        // console.log(pokeContainer);
+        // console.log(value);
         pokeContainer.forEach((container) => {
-            // console.log(container);
+            if (searchBar.id.toLowerCase().includes(value)) {
+                container.style.display = 'block'
+                
+            } else {
+                container.style.display = 'none'
+            }
         })
+
+        // console.log(pokeContainer);
+        // pokeContainer.forEach((container) => {
+        //     // console.log(container);
+        // })
     })
 
     // searchBar.addEventListener('keyup', (event) => {
