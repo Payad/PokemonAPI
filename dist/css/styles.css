@@ -54,16 +54,11 @@ li {
   margin: 0.5rem;
   font-size: 10px;
   font-weight: 600;
-  color: white;
 }
 
 .search {
   display: flex;
   justify-content: center;
-}
-.search .search-bar {
-  background: url("../imgs/search-icon3.png") no-repeat 7px;
-  background-size: 18px;
 }
 
 /*# sourceMappingURL=styles.css.map */
