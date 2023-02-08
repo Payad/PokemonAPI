@@ -78,6 +78,16 @@ li {
     justify-content: center;
 }
 
+.sort-method {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+
+    button.sortAscending {
+        margin-right: 10px;
+    }
+}
+
 // .search {
 //     display: flex;
 //     justify-content: center;

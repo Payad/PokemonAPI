@@ -61,4 +61,13 @@ li {
   justify-content: center;
 }
 
+.sort-method {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.sort-method button.sortAscending {
+  margin-right: 10px;
+}
+
 /*# sourceMappingURL=styles.css.map */

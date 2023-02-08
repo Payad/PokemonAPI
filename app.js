@@ -268,7 +268,7 @@ function getHTML() {
 function getPokeData(pokemon) {
     const url = pokemon.url;
     fetch(url)
-    .then((data) => data.json())
+    .then((data) => data.json().sort((a, b) => a.type > b.type ? 1 : -1))
     // console.log(url);
     // console.log(pokemon);
     .then(function(pokemon) {
@@ -321,6 +321,8 @@ function getPokeData(pokemon) {
 pokeContainer.innerHTML = pokemonInnerHTML;
 allPokemonContainer.append(pokeContainer);
 // allPokemonContainer.innerHTML = pokemonInnerHTML;
+
+
 
     searchFilter();
  }
@@ -562,3 +564,26 @@ const searchFilter = (data) => {
 // }
 
 getHTML();
+
+//SORT FUNCTION
+
+const ascendingBtn = document.querySelector('.sortAscending');
+
+ascendingBtn.addEventListener('click', () => {
+    // console.log(ascendingBtn);
+    const pokeContainer = document.querySelectorAll('.pokeContainer');
+
+    // pokeContainer.sort((a, b) => {
+    //     a - b;
+    // })
+
+    pokeContainer.forEach((container) => {
+        console.log(container);
+    //    let pokeArray = [container]
+    //    pokeArray.sort((a, b) => {
+    //     a.id - b.id
+
+       })
+    })
+
+
