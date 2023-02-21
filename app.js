@@ -39,7 +39,7 @@ function createPokeCard(pokeData) {
     const pokeContainer = document.createElement('div');
     pokeContainer.classList.add('pokeContainer');
     // const searchElement = document.querySelector('.search');
-
+    // console.log(pokeData);
     let pokeName = pokeData.name;
     let pokeId = pokeData.id;
     let pokeTypes = pokeData.types[0].type.name;
@@ -268,7 +268,8 @@ function getHTML() {
 function getPokeData(pokemon) {
     const url = pokemon.url;
     fetch(url)
-    .then((data) => data.json().sort((a, b) => a.type > b.type ? 1 : -1))
+    .then((data) => data.json())
+    // .sort((a, b) => a.type > b.type ? 1 : -1))
     // console.log(url);
     // console.log(pokemon);
     .then(function(pokemon) {
@@ -567,23 +568,23 @@ getHTML();
 
 //SORT FUNCTION
 
-const ascendingBtn = document.querySelector('.sortAscending');
+// const ascendingBtn = document.querySelector('.sortAscending');
 
-ascendingBtn.addEventListener('click', () => {
-    // console.log(ascendingBtn);
-    const pokeContainer = document.querySelectorAll('.pokeContainer');
+// ascendingBtn.addEventListener('click', () => {
+//     // console.log(ascendingBtn);
+//     const pokeContainer = document.querySelectorAll('.pokeContainer');
 
-    // pokeContainer.sort((a, b) => {
-    //     a - b;
-    // })
+//     // pokeContainer.sort((a, b) => {
+//     //     a - b;
+//     // })
 
-    pokeContainer.forEach((container) => {
-        console.log(container);
-    //    let pokeArray = [container]
-    //    pokeArray.sort((a, b) => {
-    //     a.id - b.id
+//     pokeContainer.forEach((container) => {
+//         console.log(container);
+//     //    let pokeArray = [container]
+//     //    pokeArray.sort((a, b) => {
+//     //     a.id - b.id
 
-       })
-    })
+//        })
+//     })
 
 
