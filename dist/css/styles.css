@@ -4,7 +4,6 @@ body {
 }
 
 .pokeContainer {
-  border: 2px solid black;
   margin: 1rem;
   background-color: rgb(255, 255, 255);
 }
@@ -16,7 +15,10 @@ body {
 }
 
 img {
-  width: 100%;
+  width: 80%;
+  margin: 0 10%;
+  background-color: rgb(192, 192, 192);
+  border-radius: 5px;
 }
 
 h3 {
@@ -25,6 +27,7 @@ h3 {
 
 p {
   width: 50px;
+  margin: 0 40%;
   border: 1px solid black;
   border-radius: 11px;
   text-align: center;
@@ -42,14 +45,18 @@ ul.menu {
   text-align: center;
 }
 
-li.list {
-  color: black;
+li.type {
+  color: white;
+  width: 70px;
+}
+
+li.ability {
+  width: 80px;
 }
 
 li {
-  width: 100px;
   border-radius: 5px;
-  padding: 0.1rem;
+  padding: 0.3rem;
   list-style: none;
   margin: 0.5rem;
   font-size: 10px;
@@ -59,6 +66,104 @@ li {
 .search {
   display: flex;
   justify-content: center;
+}
+
+input.search-bar {
+  border-radius: 10px;
+  width: 80%;
+  margin: 0.5rem;
+}
+
+.filterByType {
+  text-align: center;
+}
+.filterByType button.filter-btn {
+  margin: 3px;
+  border-radius: 5px;
+  padding: 0.3rem;
+  font-size: 10px;
+  font-weight: 600;
+  width: 3.2rem;
+}
+.filterByType .grass {
+  color: white;
+  background-color: rgb(0, 204, 0);
+}
+.filterByType .fire {
+  color: white;
+  background-color: rgb(255, 0, 0);
+}
+.filterByType .water {
+  color: white;
+  background-color: rgb(0, 128, 255);
+}
+.filterByType .electric {
+  color: white;
+  background-color: rgb(255, 255, 0);
+}
+.filterByType .psychic {
+  color: white;
+  background-color: rgb(255, 153, 153);
+}
+.filterByType .ground {
+  color: white;
+  background-color: rgb(204, 204, 0);
+}
+.filterByType .steel {
+  color: white;
+  background-color: rgb(192, 192, 192);
+}
+.filterByType .flying {
+  color: white;
+  background-color: rgb(102, 178, 255);
+}
+.filterByType .bug {
+  color: white;
+  background-color: rgb(153, 153, 0);
+}
+.filterByType .rock {
+  color: white;
+  background-color: rgb(153, 153, 0);
+}
+.filterByType .fairy {
+  color: white;
+  background-color: rgb(255, 153, 255);
+}
+.filterByType .dark {
+  color: white;
+  background-color: rgb(51, 25, 0);
+}
+.filterByType .ice {
+  color: white;
+  background-color: rgb(135, 206, 250);
+}
+.filterByType .fighting {
+  color: white;
+  background-color: rgb(102, 0, 51);
+}
+.filterByType .dragon {
+  color: white;
+  background-color: rgb(102, 0, 204);
+}
+.filterByType .normal {
+  color: white;
+  background-color: rgb(182, 175, 175);
+}
+.filterByType .poison {
+  color: white;
+  background-color: rgb(153, 0, 153);
+}
+.filterByType .ghost {
+  color: white;
+  background-color: rgb(76, 0, 153);
+}
+.filterByType .reset {
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+button.reset {
+  padding: 0.3rem;
 }
 
 .sort-method {
