@@ -1,7 +1,7 @@
 //Function to fetch 151 pokemon
 function fetchPokemon(clickValue){
     let pokemonArr = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 251; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`
         pokemonArr.push(fetch(url).then(data => data.json()))
         // const h4 = document.createElement('h4');
