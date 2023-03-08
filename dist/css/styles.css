@@ -8,17 +8,25 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+.navContainer {
+  margin-bottom: 20px;
+}
+
 .flex-container {
   display: flex;
   text-align: center;
   justify-content: space-around;
 }
 
-img {
+.pokeImg {
   width: 80%;
   margin: 0 10%;
   background-color: rgb(192, 192, 192);
   border-radius: 5px;
+}
+
+.pokeLogo {
+  width: 100%;
 }
 
 h3 {
@@ -72,6 +80,12 @@ input.search-bar {
   border-radius: 10px;
   width: 80%;
   margin: 0.5rem;
+  background-image: url("imgs/search-icon3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box;
+  margin-bottom: 2rem;
 }
 
 .filterByType {
@@ -91,7 +105,7 @@ input.search-bar {
 }
 .filterByType .fire {
   color: white;
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(247, 119, 6);
 }
 .filterByType .water {
   color: white;
@@ -100,6 +114,7 @@ input.search-bar {
 .filterByType .electric {
   color: white;
   background-color: rgb(255, 255, 0);
+  text-shadow: #FC0 5px 0 10px;
 }
 .filterByType .psychic {
   color: white;
@@ -123,7 +138,7 @@ input.search-bar {
 }
 .filterByType .rock {
   color: white;
-  background-color: rgb(153, 153, 0);
+  background-color: rgb(108, 108, 1);
 }
 .filterByType .fairy {
   color: white;
@@ -173,6 +188,54 @@ button.reset {
 }
 .sort-method button.sortAscending {
   margin-right: 10px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+.sort-method button.sortDescending {
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .allPokemonContainer {
+    display: flex;
+    flex-flow: wrap;
+  }
+  .allPokemonContainer .pokeContainer {
+    width: 30%;
+    margin: 0.8rem;
+  }
+  input.search-bar {
+    width: 50%;
+    height: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .allPokemonContainer .pokeContainer {
+    margin: 1rem;
+  }
+  input.search-bar {
+    width: 30%;
+    height: 1.5rem;
+  }
+  .sort-method {
+    height: 2rem;
+  }
+  .sort-method button.sortAscending {
+    width: 5rem;
+    font-size: 18px;
+  }
+  .sort-method button.sortDescending {
+    width: 5rem;
+    font-size: 18px;
+  }
+  .filterByType button.filter-btn {
+    font-size: 14px;
+    width: 5rem;
+    height: 2rem;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

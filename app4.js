@@ -1,9 +1,21 @@
 //Function to fetch 151 pokemon
 function fetchPokemon(clickValue){
     let pokemonArr = [];
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 20; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`
         pokemonArr.push(fetch(url).then(data => data.json()))
+        // const h4 = document.createElement('h4');
+        if (i <= 150) {
+            // console.log("hello")
+            // const ul = document.querySelector('.type');
+            const allPokemonContainer = document.querySelector('.allPokemonContainer');
+            // console.log(allPokemonContainer)
+            // const h4 = document.querySelector('h4');
+            const h4 = document.createElement('h4');
+            h4.innerHTML = "Gen I";
+            // console.log(h4)
+            
+        }
     }
     // console.log(pokemonArr)
     //Promise.all to iterate over array and return a single array/Promise
@@ -20,6 +32,12 @@ function fetchPokemon(clickValue){
             // type: result.types.forEach((type) => console.log(type)),
         })).sort((a, b) => a.id > b.id ? 1 : -1)
 
+
+        // for (let i = 1; i <= 150; i++) {
+        //     if (pokemon[i] <= 150) {
+        //         console.log('Hello');
+        //     }
+        // }
         // console.log(pokemon)
         // console.log(results)
 
@@ -129,7 +147,7 @@ function typeFilter(pokemon) {
 // })
 
 fetchPokemon();
-
+// genPokemon(pokemon)
     //Create pokemon div and display pokemon 
     const createPokeCard = (pokemon, results) => {
        const allPokemonContainer = document.querySelector('.allPokemonContainer');
@@ -144,9 +162,12 @@ fetchPokemon();
     //    ).join('');
    
 //    createPokeCard(results)
+// genPokemon(pokemon);
+////h4 class="Gen"></h4><h4 class="Gen2"></h4
     const pokemonInnerHTML = pokemon.map((pokemon) => 
-    `<div class="pokeContainer" id="${pokemon.id}">
-    <img srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokemon.id}.png`}>
+    `
+    <div class="pokeContainer" id="${pokemon.id}">
+    <img class="pokeImg" srcset=${`https://nexus.traction.one/images/pokemon/pokemon/${pokemon.id}.png`}>
         <h3>${pokemon.name}</h3>
       <p>#${pokemon.id}</p>
        <div class="flex-container">
@@ -173,9 +194,35 @@ fetchPokemon();
         // typeFilter(pokemon)
         idAsc(pokemon)
         idDesc(pokemon)
+        genPokemon(pokemon)
         // resetPokemon(pokemon)
         const ul = document.querySelector('.types');
+        // const h4 = document.createElement('h4')
+        // const genPokemon = (pokemon) => {
 
+        // }
+
+    //     for (let i = 1; i <= 20; i++) {
+    //         const h4 = document.createElement('h4')
+    //         // console.log(pokemon.id)
+    //     if (i <= 10) {
+    //         // console.log(h4);
+    //         const allPokemonContainer = document.querySelector('.allPokemonContainer')
+    //         console.log(allPokemonContainer)
+    //         console.log(i)
+    //         const h4 = document.querySelector('.Gen');
+    //         // h4.innerHTML = "GEN I"
+    //         h4.textContent = "Gen I"
+    //         console.log(h4)
+    //     } 
+    //      if (i > 10 && i <= 20) {
+    //         console.log(i)
+    //         const h4 = document.querySelector('.Gen2');
+    //         // h4.innerHTML = "GEN II"
+    //         h4.textContent = "Gen II"
+    //         console.log(h4)
+    //     }
+    // }
         // const colors = 'rgb(153, 0, 153)';
         // console.log(colors)
         // // console.log(ul)
@@ -190,21 +237,25 @@ fetchPokemon();
         } else if (typeLi.innerHTML === "poison") {
             typeLi.style.backgroundColor = "rgb(153, 0, 153)"
         } else if (typeLi.innerHTML === "fire") {
-            typeLi.style.backgroundColor = "rgb(255, 0, 0)"
+            // typeLi.style.backgroundColor = "rgb(255, 0, 0)"
+            typeLi.style.backgroundColor = "rgb(247 119 6)"
         } else if (typeLi.innerHTML === "bug") {
             typeLi.style.backgroundColor = "rgb(153, 153, 0)"
         } else if (typeLi.innerHTML === "water") {
             typeLi.style.backgroundColor = "rgb(0, 128, 255)"
         } else if (typeLi.innerHTML === "normal") {
-            typeLi.style.backgroundColor = "rgb(244, 244, 244)"
+            // typeLi.style.backgroundColor = "rgb(244, 244, 244)"
+            typeLi.style.backgroundColor = "rgb(182, 175, 175)";
         } else if (typeLi.innerHTML === "fighting") {
             typeLi.style.backgroundColor = "rgb(102, 0, 51)"
         } else if (typeLi.innerHTML === "flying") {
             typeLi.style.backgroundColor = "rgb(102, 178, 255)"
         } else if (typeLi.innerHTML === "electric") {
-            typeLi.style.backgroundColor = "rgb(255, 153, 153)"
+            typeLi.style.backgroundColor = "rgb(255, 255, 0)"
+            typeLi.style.textShadow = "#fc0 8px 0 10px"
         } else if (typeLi.innerHTML === "rock") {
-            typeLi.style.backgroundColor = "rgb(153, 153, 0)"
+            // typeLi.style.backgroundColor = "rgb(153, 153, 0)"
+            typeLi.style.backgroundColor = "rgb(108, 108, 1)"
         } else if (typeLi.innerHTML === "psychic") {
             typeLi.style.backgroundColor = "rgb(255, 153, 153)"
         } else if (typeLi.innerHTML === "ground") {
@@ -218,7 +269,8 @@ fetchPokemon();
         } else if (typeLi.innerHTML === "ghost") {
             typeLi.style.backgroundColor = "rgb(76, 0, 153)"
         } else if (typeLi.innerHTML === "ice") {
-            typeLi.style.backgroundColor = "rgb(204, 255, 255)"
+            // typeLi.style.backgroundColor = "rgb(204, 255, 255)"
+            typeLi.style.backgroundColor = "rgb(135, 206, 250)"
         } else if (typeLi.innerHTML === "dark") {
             typeLi.style.backgroundColor = "rgb(51, 25, 0)"
         } else if (typeLi.innerHTML === "undefined") {
@@ -229,8 +281,15 @@ fetchPokemon();
     abilityLi.forEach((abilityLi) => {   
     if (abilityLi) {
         abilityLi.style.backgroundColor = "rgb(192, 192, 192)"
+    } 
+    if (abilityLi.innerHTML === "undefined") {
+        abilityLi.style.display = "none"
     }
 })
+
+// if (abilityLi.innerHTML === "undefined") {
+//     abilityLi.style.display = "none"
+// }
     // switch(li) {
     //     case "grass": li.style.backgroundColor = 'green'
     //     break;
@@ -329,6 +388,7 @@ fetchPokemon();
         // createPokeTypes(results, ul)
         
     }
+    
     // const ul = document.querySelector('.types');
     // function createPokeTypes(res, ul) {
     //     console.log(res)
@@ -406,7 +466,7 @@ const searchFilter = () => {
         let value = event.target.value.toLowerCase();
         // console.log(value)
         pokeContainer.forEach((container) => {
-            if (container.querySelector('h3').textContent.toLowerCase().includes(value)) {
+            if (container.querySelector('h3').textContent.toLowerCase().includes(value) || container.querySelector('p').textContent.includes(value)) {
                 container.style.display = 'block'
             } else {
                 container.style.display = 'none'
@@ -415,6 +475,20 @@ const searchFilter = () => {
         // console.log('Hello')
         // console.log(search);
     })
+}
+
+function genPokemon(pokemon) {
+// console.log(pokemon)
+for (let i = 1; i <= 20; i++) {
+// console.log(pokemon[i])
+if(pokemon[i] <= 10) {
+    const h4 = document.querySelector('.Gen')
+    // console.log(h4)
+    console.log(pokemon[i])
+    h4.innerHTML = "Gen I"
+    console.log(h4)
+}
+}
 }
 
 

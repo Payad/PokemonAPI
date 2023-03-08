@@ -20,6 +20,10 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+.navContainer {
+    margin-bottom: 20px;
+}
+
 .flex-container {
     display: flex;
     // justify-content: space-between;
@@ -28,13 +32,17 @@ body {
     justify-content: space-around;
 }
 
-img {
+.pokeImg {
     // width: 100px;
     // width: 100%;
     width: 80%;
     margin: 0 10%;
     background-color: rgb(192, 192, 192);
     border-radius: 5px;
+}
+
+.pokeLogo {
+    width: 100%;
 }
 
 h3 {
@@ -97,6 +105,12 @@ input.search-bar {
     border-radius: 10px;
     width: 80%;
     margin: 0.5rem;
+    background-image: url("imgs/search-icon3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-origin: content-box;
+    margin-bottom: 2rem;
 }
 
 .filterByType {
@@ -120,72 +134,75 @@ input.search-bar {
     }
     .fire {
         color: white;
-        background-color: rgb(255, 0, 0);
+        // background-color: rgb(255, 0, 0);
+        background-color: rgb(247 119 6);
     }
     .water {
         color: white;
-        background-color: rgb(0, 128, 255)
+        background-color: rgb(0, 128, 255);
     }
     .electric {
         color: white;
-        background-color: rgb(255, 255, 0)
+        background-color: rgb(255, 255, 0);
+        text-shadow: #FC0 5px 0 10px;
     }
     .psychic {
         color: white;
-        background-color: rgb(255, 153, 153)
+        background-color: rgb(255, 153, 153);
     }
     .ground {
         color: white;
-        background-color: rgb(204, 204, 0)
+        background-color: rgb(204, 204, 0);
     }
     .steel {
         color: white;
-        background-color: rgb(192, 192, 192)
+        background-color: rgb(192, 192, 192);
     }
     .flying {
         color: white;
-        background-color: rgb(102, 178, 255)
+        background-color: rgb(102, 178, 255);
     }
     .bug {
         color: white;
-        background-color: rgb(153, 153, 0)
+        background-color: rgb(153, 153, 0);
     }
     .rock {
         color: white;
-        background-color: rgb(153, 153, 0)
+        // background-color: rgb(153, 153, 0)
+        background-color: rgb(108, 108, 1);
     }
     .fairy {
         color: white;
-        background-color: rgb(255, 153, 255)
+        background-color: rgb(255, 153, 255);
     }
     .dark {
         color: white;
-        background-color: rgb(51, 25, 0)
+        background-color: rgb(51, 25, 0);
     }
     .ice {
         color: white;
-        background-color: rgb(135, 206, 250)
+        background-color: rgb(135, 206, 250);
         // background-color: rgb(204, 255, 255);
     }
     .fighting {
         color: white;
-        background-color: rgb(102, 0, 51)
+        background-color: rgb(102, 0, 51);
     }
     .dragon {
         color: white;
-        background-color: rgb(102, 0, 204)
+        background-color: rgb(102, 0, 204);
     }
     .normal {
         color: white;
-        background-color: rgb(182, 175, 175)
+        background-color: rgb(182, 175, 175);
     }
     .poison {
         color: white;
-        background-color: rgb(153, 0, 153)
+        background-color: rgb(153, 0, 153);
     }
     .ghost {
         color: white;
-        background-color: rgb(76, 0, 153)
+        background-color: rgb(76, 0, 153);
     }
     .reset {
         color: white;
@@ -209,10 +226,74 @@ button.reset {
     display: flex;
     justify-content: center;
     margin: 2rem 0;
+    // border-radius: 5px;
 
     button.sortAscending {
         margin-right: 10px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        // width: 5rem;
     }
+    button.sortDescending {
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        // width: 5rem;
+    }
+}
+
+@media(min-width: 768px) {
+    .allPokemonContainer {
+        display: flex;
+        flex-flow: wrap;
+
+        .pokeContainer {
+            width: 30%;
+            margin: 0.8rem
+        }
+    }
+    input.search-bar {
+        width: 50%;
+        height: 1.5rem;
+    }
+
+}
+
+@media(min-width: 1024px) {
+   .allPokemonContainer {
+
+    .pokeContainer {
+        // margin: initial;
+        margin: 1rem;
+    }
+   }
+
+   input.search-bar {
+        width: 30%;
+        height: 1.5rem;
+   }
+
+   .sort-method {
+    // font-size: 14px;
+    // width: 5rem;
+    height: 2rem;
+
+    button.sortAscending {
+        width: 5rem;
+        font-size: 18px;
+    }
+    button.sortDescending {
+        width: 5rem;
+        font-size: 18px;
+    }
+   }
+
+   .filterByType button.filter-btn {
+    font-size: 14px;
+    width: 5rem;
+    height: 2rem;
+   }
 }
 
 // .search {
